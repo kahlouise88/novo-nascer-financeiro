@@ -3,7 +3,7 @@ export default async (req) => {
 
   const RESEND_KEY = process.env.RESEND_API_KEY
   const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
-  const TO_EMAIL = process.env.KATHARINE_EMAIL || 'contato@katharinelouise.com'
+  const TO_EMAIL = process.env.KATHARINE_EMAIL || 'katharine.rodrigues4@gmail.com'
 
   let vars = {}
   try {
