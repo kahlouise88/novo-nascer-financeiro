@@ -92,21 +92,16 @@ export default function ChatInterface({ onDone }) {
     handleUserAnswer(inputValue.trim())
   }
 
-  const submitDiagnostic = async (finalVars) => {
-    const step = getStep('final_msg')
-    const newMsgs = [...messages]
+  const submitDiagnostic = (finalVars) => {
+    // Fire and forget — não bloqueia a navegação
+    fetch('/.netlify/functions/generate-report-background', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(finalVars),
+    }).catch((e) => console.error('Erro ao enviar diagnóstico:', e))
 
-    try {
-      await fetch('/.netlify/functions/generate-report-background', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(finalVars),
-      })
-    } catch (e) {
-      console.error('Erro ao gerar relatório:', e)
-    }
-
-    onDone()
+    // Aguarda 1 segundo para garantir que o fetch foi iniciado
+    setTimeout(() => onDone(), 1000)
   }
 
   // Bootstrap: run first step on mount if no saved state
