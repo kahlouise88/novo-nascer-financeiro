@@ -136,4 +136,3 @@ Calcule todos os números. Classifique no estágio correto. Seja específica e p
   })
 }
 
-export const config = { path: '/api/generate-report' }
