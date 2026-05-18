@@ -16,7 +16,7 @@ export default function App() {
 
   const handleDone = () => {
     setScreen('thankyou')
-    localStorage.setItem('nnf_screen', 'thankyou')
+    localStorage.removeItem('nnf_screen')
     localStorage.removeItem('nnf_progress')
   }
 
