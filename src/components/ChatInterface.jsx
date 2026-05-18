@@ -97,7 +97,7 @@ export default function ChatInterface({ onDone }) {
     const newMsgs = [...messages]
 
     try {
-      await fetch('/.netlify/functions/generate-report', {
+      await fetch('/.netlify/functions/generate-report-background', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(finalVars),
