@@ -19,7 +19,7 @@ export default function ThankYou({ onRestart }) {
         <p className="thankyou-gift-label">Enquanto aguarda, um presente para você:</p>
         <a
           className="btn-primary"
-          href="https://novo-nascer-ciclo.netlify.app"
+          href="/ciclo.html"
           target="_blank"
           rel="noopener noreferrer"
         >

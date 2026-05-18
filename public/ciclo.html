@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Por que você gasta mais em certas semanas do mês — Katharine Louise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory: #FAFAF7;
+      --gold: #C9A84C;
+      --gold-light: #F5EDD6;
+      --gold-hover: #E2C97E;
+      --text: #1C1C1C;
+      --text-secondary: #6B6B6B;
+      --border: #EDE8E1;
+    }
+
+    body {
+      background: var(--ivory);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--gold);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    header p.by {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 5vw, 38px);
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    header h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 20px 32px;
+      text-align: center;
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: var(--gold-light);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3.5vw, 22px);
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 40px auto;
+    }
+
+    /* INTRO */
+    .intro {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .intro-box {
+      background: white;
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 12px rgba(201,168,76,0.08);
+    }
+
+    .intro-box p {
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .intro-box p:last-child { margin-bottom: 0; }
+
+    .intro-box strong { color: var(--text); font-weight: 500; }
+
+    /* PHASES */
+    .phases {
+      max-width: 680px;
+      margin: 48px auto 0;
+      padding: 0 20px;
+    }
+
+    .phases h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .phase-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(201,168,76,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .phase-number {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .phase-title-group h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .phase-title-group span {
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .phase-body p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .phase-alert {
+      background: var(--gold-light);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--text);
+      margin-top: 16px;
+    }
+
+    .phase-alert strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* INSIGHT */
+    .insight {
+      max-width: 680px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+
+    .insight-box {
+      background: var(--text);
+      color: white;
+      border-radius: 12px;
+      padding: 40px 36px;
+      text-align: center;
+    }
+
+    .insight-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .insight-box h2 em {
+      color: var(--gold-hover);
+      font-style: italic;
+    }
+
+    .insight-box p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      max-width: 480px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .insight-list {
+      list-style: none;
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .insight-list li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .insight-list li:last-child { border-bottom: none; }
+
+    .insight-list li::before {
+      content: '→';
+      color: var(--gold-hover);
+      font-size: 14px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* CTA */
+    .cta {
+      max-width: 680px;
+      margin: 0 auto 64px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 4.5vw, 34px);
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .cta p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 16px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    }
+
+    .cta-btn:hover { background: var(--gold-hover); }
+
+    .cta-note {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: white;
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .intro-box, .phase-card { padding: 24px 20px; }
+      .insight-box { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="by">por Katharine Louise · Método CPS</p>
+    <h1>Por que você gasta mais <em>em certas semanas</em> do mês</h1>
+  </header>
+
+  <section class="hero">
+    <span class="tag">Finanças + Ciclo Menstrual</span>
+    <p>O que ninguém te contou: suas finanças também têm ciclos. E entender isso muda tudo.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="intro">
+    <div class="intro-box">
+      <p>Você já se pegou comprando algo por impulso e, dias depois, perguntando a si mesma <strong>"por que eu fiz isso?"</strong></p>
+      <p>Você não é fraca. Não tem falta de disciplina. Tem hormônios — e eles influenciam diretamente a sua relação com o dinheiro ao longo do mês.</p>
+      <p>O Método CPS (Cyclical Performance System) da Katharine Louise aplica o ritmo do ciclo menstrual à produtividade e às finanças. O que você vai ler agora é a base de tudo.</p>
+    </div>
+  </section>
+
+  <section class="phases">
+    <h2>As 4 fases do ciclo — e o que acontece com o seu dinheiro</h2>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-number">1</div>
+        <div class="phase-title-group">
+          <h3>Fase Menstrual</h3>
+          <span>Dias 1 a 5 · O recolhimento</span>
+        </div>
+      </div>
+      <div class="phase-body">
+        <p>Estrogênio e progesterona estão no nível mais baixo. O corpo pede descanso. A mente fica introspectiva, sensível, com menos tolerância ao desconforto.</p>
+        <p>Financeiramente, esse é o momento dos <strong>gastos de conforto</strong>: delivery, itens de autocuidado, compras por impulso em aplicativos tarde da noite. A dor física e emocional pede alívio imediato — e o cartão vira o atalho.</p>
+        <div class="phase-alert">
+          <strong>Atenção:</strong> Evite tomar decisões financeiras importantes durante esses dias. Nada de assinar contratos, fechar investimentos ou fazer compras grandes. É a fase de revisar, não de agir.
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-number">2</div>
+        <div class="phase-title-group">
+          <h3>Fase Folicular</h3>
+          <span>Dias 6 a 13 · O otimismo perigoso</span>
+        </div>
+      </div>
+      <div class="phase-body">
+        <p>O estrogênio começa a subir. A energia volta. O humor melhora. Você acorda com vontade de mudar tudo — a casa, a rotina, o negócio.</p>
+        <p>Esse pico de otimismo é lindo para criar e planejar, mas <strong>perigoso para as finanças</strong>. É a fase em que as mulheres mais se inscrevem em cursos que não vão terminar, compram ferramentas que não vão usar e tomam decisões financeiras movidas pela empolgação do momento.</p>
+        <div class="phase-alert">
+          <strong>Atenção:</strong> Use essa energia para pesquisar e planejar. Mas aplique a regra dos 48 horas: qualquer compra acima de R$100 espera dois dias antes de ser feita.
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-number">3</div>
+        <div class="phase-title-group">
+          <h3>Fase Ovulatória</h3>
+          <span>Dias 14 a 17 · O pico social</span>
+        </div>
+      </div>
+      <div class="phase-body">
+        <p>Estrogênio e testosterona no auge. Você está magnética, comunicativa, generosa. É a fase de maior conexão social — e de maior gasto com os outros.</p>
+        <p>Jantares, presentes, eventos, roupas novas para sair. A necessidade de <strong>agradar e ser vista</strong> fala mais alto. Os gastos sociais explodem sem você perceber. E como a energia está alta, a culpa ainda não chegou.</p>
+        <div class="phase-alert">
+          <strong>Atenção:</strong> Ótimo momento para negociações, vendas e reuniões importantes. Mas defina um teto mensal para gastos sociais e não ultrapasse — mesmo que a vontade seja grande.
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header">
+        <div class="phase-number">4</div>
+        <div class="phase-title-group">
+          <h3>Fase Lútea</h3>
+          <span>Dias 18 a 28 · O território da TPM financeira</span>
+        </div>
+      </div>
+      <div class="phase-body">
+        <p>A progesterona sobe e depois despenca. A dopamina cai. O cérebro busca fontes rápidas de prazer — e as compras online são o gatilho mais fácil. Rolagem de Instagram + cartão salvo = combinação explosiva.</p>
+        <p>Pesquisas mostram que mulheres em fase lútea tendem a <strong>gastar até 25% mais em compras por impulso</strong> do que em qualquer outra fase do ciclo. É o momento da TPM financeira: compras para regular emoções, não para atender necessidades reais.</p>
+        <div class="phase-alert">
+          <strong>Atenção:</strong> Delete os aplicativos de compra do celular nesses dias se precisar. Sério. Ou estabeleça uma "lista de desejos" — o que ainda quiser comprar após a menstruação, você compra. A maioria some da lista sozinha.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight">
+    <div class="insight-box">
+      <h2>O que muda quando você <em>mapeia seu ciclo financeiro</em></h2>
+      <p>Não é sobre ter mais disciplina. É sobre entender o ritmo do seu próprio corpo e usar isso a seu favor.</p>
+      <ul class="insight-list">
+        <li>Você para de se culpar por gastos impulsivos e começa a preveni-los</li>
+        <li>Aprende qual semana do mês é ideal para fechar investimentos</li>
+        <li>Descobre quando negociar salário, cobrar clientes, pedir aumento</li>
+        <li>Cria um orçamento que respeita seus altos e baixos de energia</li>
+        <li>Para de sabotar seu próprio crescimento financeiro sem perceber</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Você acabou de completar o seu diagnóstico financeiro</h2>
+    <p>A Katharine recebeu sua análise completa e vai entrar em contato para agendar a sua devolutiva — uma sessão só sua, onde você vai entender exatamente onde está e qual é o seu próximo passo.</p>
+    <a href="https://wa.me/5521996106342?text=Ol%C3%A1%20Katharine%21%20Acabei%20de%20terminar%20meu%20diagn%C3%B3stico%20do%20Novo%20Nascer%20Financeiro%20e%20quero%20agendar%20minha%20devolutiva%20%F0%9F%92%9C" class="cta-btn" target="_blank">
+      Quero agendar minha devolutiva →
+    </a>
+    <p class="cta-note">Fique de olho no seu WhatsApp. 💜</p>
+  </section>
+
+  <footer>
+    <p>O Novo Nascer Financeiro · por Katharine Louise · katharinelouise.com</p>
+  </footer>
+
+</body>
+</html>
