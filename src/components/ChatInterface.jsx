@@ -8,7 +8,14 @@ function resolve(val, vars) {
 }
 
 export default function ChatInterface({ onDone }) {
-  const saved = JSON.parse(localStorage.getItem('nnf_progress') || 'null')
+  const saved = (() => {
+    try {
+      const s = JSON.parse(localStorage.getItem('nnf_progress') || 'null')
+      // Se estava no meio de geração ou concluído, recomeça
+      if (!s || s.currentStepId === 'generating' || s.currentStepId === 'done') return null
+      return s
+    } catch { return null }
+  })()
 
   const [messages, setMessages] = useState(saved?.messages || [])
   const [currentStepId, setCurrentStepId] = useState(saved?.currentStepId || 'welcome')
