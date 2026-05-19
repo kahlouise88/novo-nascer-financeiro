@@ -1,9 +1,16 @@
+// Declara explicitamente como background function (até 15 min de execução)
+export const config = { background: true }
+
 export default async (req) => {
   console.log('FUNÇÃO INICIADA — método:', req.method)
 
   const RESEND_KEY = process.env.RESEND_API_KEY
   const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
   const TO_EMAIL = process.env.KATHARINE_EMAIL || 'katharine.rodrigues4@gmail.com'
+
+  console.log('ENV CHECK — RESEND_KEY presente:', !!RESEND_KEY)
+  console.log('ENV CHECK — ANTHROPIC_KEY presente:', !!ANTHROPIC_KEY)
+  console.log('ENV CHECK — TO_EMAIL:', TO_EMAIL)
 
   let vars = {}
   try {
@@ -72,7 +79,10 @@ Mudança de poder: ${vars.mudanca_poder || 'Pulou'}
         }),
       })
       const emailData = await emailRes.json()
-      console.log('Email enviado:', JSON.stringify(emailData))
+      console.log('Resend status:', emailRes.status, JSON.stringify(emailData))
+      if (emailRes.status !== 200 && emailRes.status !== 201) {
+        console.error('RESEND REJEITOU O EMAIL — verifique a API key e o email de destino')
+      }
     } catch (e) {
       console.error('Erro ao enviar email:', e.message)
     }

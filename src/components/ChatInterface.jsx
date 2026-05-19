@@ -99,16 +99,30 @@ export default function ChatInterface({ onDone }) {
     handleUserAnswer(inputValue.trim())
   }
 
-  const submitDiagnostic = (finalVars) => {
-    // Fire and forget — não bloqueia a navegação
+  const submitDiagnostic = async (finalVars) => {
+    // PASSO 1: Netlify Forms — backbone confiável, zero serviço externo
+    try {
+      const formBody = new URLSearchParams()
+      formBody.append('form-name', 'diagnostico-nnf')
+      Object.entries(finalVars).forEach(([k, v]) => formBody.append(k, String(v ?? '')))
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      })
+      console.log('Diagnóstico enviado via Netlify Forms')
+    } catch (e) {
+      console.error('Erro Netlify Forms:', e)
+    }
+
+    // PASSO 2: Background function para gerar relatório Claude (fire and forget)
     fetch('/.netlify/functions/generate-report-background', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(finalVars),
-    }).catch((e) => console.error('Erro ao enviar diagnóstico:', e))
+    }).catch((e) => console.error('Erro ao enviar para background function:', e))
 
-    // Aguarda 1 segundo para garantir que o fetch foi iniciado
-    setTimeout(() => onDone(), 1000)
+    onDone()
   }
 
   // Bootstrap: run first step on mount if no saved state

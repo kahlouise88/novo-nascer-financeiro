@@ -5,7 +5,21 @@ import ThankYou from './components/ThankYou.jsx'
 
 export default function App() {
   const [screen, setScreen] = useState(() => {
+    // ?reset=1 na URL sempre limpa tudo e volta para a landing
+    if (window.location.search.includes('reset')) {
+      localStorage.removeItem('nnf_screen')
+      localStorage.removeItem('nnf_progress')
+      return 'landing'
+    }
     const saved = localStorage.getItem('nnf_screen')
+    // Só restaura 'chat' se também houver progresso salvo — evita tela em branco
+    if (saved === 'chat') {
+      const hasProgress = localStorage.getItem('nnf_progress')
+      if (!hasProgress) {
+        localStorage.removeItem('nnf_screen')
+        return 'landing'
+      }
+    }
     return saved || 'landing'
   })
 
