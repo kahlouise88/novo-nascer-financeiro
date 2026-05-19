@@ -106,14 +106,16 @@ Mudança de poder: ${vars.mudanca_poder || 'Pulou'}
           max_tokens: 8000,
           system: `Você é o motor de análise do O Novo Nascer Financeiro, criado por Katharine Louise.
 Gere um relatório HTML completo pronto para imprimir como PDF.
-Retorne APENAS o HTML começando com <!DOCTYPE html>.
+Retorne APENAS o HTML puro começando com <!DOCTYPE html>. NÃO use blocos de código markdown. NÃO use ``` antes ou depois. Apenas o HTML direto.
 Inclua: capa em branco marfim (#FAFAF7) e dourado (#C9A84C), radiografia financeira, estágio atual (Sobrevivência/Organização/Construção/Expansão), ativos dormentes, calculadora de liberdade (sobreviver/respirar/livre), plano 6 meses, rotina semanal, guia de investimentos e carta personalizada assinada por Katharine Louise.
 CSS embutido com fundo #FAFAF7, dourado #C9A84C, Cormorant Garamond nos títulos.`,
           messages: [{ role: 'user', content: diagnosticText }],
         }),
       })
       const claudeData = await claudeRes.json()
-      const reportHtml = claudeData.content?.[0]?.text || ''
+      let reportHtml = claudeData.content?.[0]?.text || ''
+      // Remove markdown code fences caso Claude envolva o HTML com ```html ... ```
+      reportHtml = reportHtml.replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim()
       console.log('Claude respondeu, tamanho:', reportHtml.length)
 
       if (RESEND_KEY && reportHtml) {
